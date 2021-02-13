@@ -8,9 +8,6 @@
 import Foundation
 
 protocol PresentEditorView {
-//    func openImage()
-//    func saveImage()
-//    func clearImage()
     func rotateImage()
 //    func makeImageBW()
 //    func mirrorImage()

@@ -15,6 +15,7 @@
 		E75B4E8725D827A2001E858D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E75B4E8525D827A2001E858D /* LaunchScreen.storyboard */; };
 		E75B4E9025D82816001E858D /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75B4E8F25D82816001E858D /* Presenter.swift */; };
 		E75B4E9325D8337C001E858D /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75B4E9225D8337C001E858D /* CustomButton.swift */; };
+		E75B4E9625D83793001E858D /* MainStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75B4E9525D83793001E858D /* MainStackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		E75B4E8825D827A2001E858D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E75B4E8F25D82816001E858D /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		E75B4E9225D8337C001E858D /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		E75B4E9525D83793001E858D /* MainStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				E75B4E7A25D827A0001E858D /* AppDelegate.swift */,
 				E75B4E7C25D827A0001E858D /* SceneDelegate.swift */,
 				E75B4E7E25D827A0001E858D /* ViewController.swift */,
+				E75B4E9525D83793001E858D /* MainStackView.swift */,
 				E75B4E9225D8337C001E858D /* CustomButton.swift */,
 				E75B4E8F25D82816001E858D /* Presenter.swift */,
 				E75B4E8025D827A0001E858D /* Main.storyboard */,
@@ -145,6 +148,7 @@
 			files = (
 				E75B4E7F25D827A0001E858D /* ViewController.swift in Sources */,
 				E75B4E7B25D827A0001E858D /* AppDelegate.swift in Sources */,
+				E75B4E9625D83793001E858D /* MainStackView.swift in Sources */,
 				E75B4E9025D82816001E858D /* Presenter.swift in Sources */,
 				E75B4E7D25D827A0001E858D /* SceneDelegate.swift in Sources */,
 				E75B4E9325D8337C001E858D /* CustomButton.swift in Sources */,

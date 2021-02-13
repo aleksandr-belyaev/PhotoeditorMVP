@@ -9,29 +9,28 @@ import UIKit
 
 class ViewController: UIViewController, PresentEditorView {
     
-    weak var sourceImageView: UIImageView!
-    weak var rotateButton: CustomButton!
+    weak var editorStackView: EditorStackView!
     lazy var presenter = Presenter(editorView: self)
 
     override func loadView() {
         super.loadView()
         
-        let rotateButton = CustomButton(withTitle: "Повернуть")
-        rotateButton.addTarget(self, action: #selector(rotateImageButtonTapped), for: .touchUpInside)
+        let editorStackView = EditorStackView()
         
-        self.view.addSubview(rotateButton)
+        self.view.addSubview(editorStackView)
         
         NSLayoutConstraint.activate([
-            rotateButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-            rotateButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
-        
+            editorStackView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            editorStackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            editorStackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10)
         ])
         
-        self.rotateButton = rotateButton
+        self.editorStackView = editorStackView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.editorStackView.rotateButton?.addTarget(self, action: #selector(rotateImageButtonTapped), for: .touchUpInside)
         
     }
     
@@ -41,7 +40,8 @@ class ViewController: UIViewController, PresentEditorView {
     }
     
     func rotateImage() {
-        self.sourceImageView.transform = sourceImageView.transform.rotated(by: .pi/2)
+        self.editorStackView.rotateImage()
+        
     }
 
 
