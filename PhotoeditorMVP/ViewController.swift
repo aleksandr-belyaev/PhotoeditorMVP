@@ -11,7 +11,7 @@ class ViewController: UIViewController, PresentEditorView {
     
     weak var editorStackView: EditorStackView!
     lazy var presenter = Presenter(editorView: self)
-
+    
     override func loadView() {
         super.loadView()
         
@@ -31,19 +31,35 @@ class ViewController: UIViewController, PresentEditorView {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.editorStackView.rotateButton?.addTarget(self, action: #selector(rotateImageButtonTapped), for: .touchUpInside)
-        
+        self.editorStackView.bwButton?.addTarget(self, action: #selector(bwImageButtonTapped), for: .touchUpInside)
+        self.editorStackView.mirrorButton?.addTarget(self, action: #selector(mirrorImageButtonTapped), for: .touchUpInside)
     }
     
-    //PresentEditorView Protocols
     @objc func rotateImageButtonTapped(_ sender: UIButton) {
         presenter.rotateButtonTapped()
+    }
+    
+    @objc func bwImageButtonTapped(_ sender: UIButton) {
+        presenter.bwButtonTapped()
+    }
+    
+    @objc func mirrorImageButtonTapped(_ sender: UIButton) {
+        presenter.mirrorImageButtonTapped()
     }
     
     func rotateImage() {
         self.editorStackView.rotateImage()
         
     }
-
-
+    
+    func makeImageBW() {
+        self.editorStackView.makeImageBW()
+    }
+    
+    func mirrorImage() {
+        self.editorStackView.mirrorImage()
+    }
+    
+    
 }
 

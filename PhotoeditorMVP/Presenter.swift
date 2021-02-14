@@ -9,8 +9,8 @@ import Foundation
 
 protocol PresentEditorView {
     func rotateImage()
-//    func makeImageBW()
-//    func mirrorImage()
+    func makeImageBW()
+    func mirrorImage()
 }
 
 protocol PresentSavedImagesView {
@@ -27,6 +27,14 @@ class Presenter {
     
     func rotateButtonTapped() {
         self.editorView?.rotateImage()
+    }
+    
+    func bwButtonTapped() {
+        self.editorView?.makeImageBW()
+    }
+    
+    func mirrorImageButtonTapped() {
+        self.editorView?.mirrorImage()
     }
     
 }
