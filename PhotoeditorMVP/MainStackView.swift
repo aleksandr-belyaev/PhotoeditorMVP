@@ -7,13 +7,13 @@
 
 import UIKit
 
-class EditorStackView: UIStackView {
+class MainStackView: UIStackView {
     var imageView: UIImageView!
     var buttonStack: UIStackView!
     var rotateButton: CustomButton!
     var bwButton: CustomButton!
     var mirrorButton: CustomButton!
-    var imageCollection: CollectionViewController!
+    var imageCollection: CollectionView!
     
     init() {
         super.init(frame: .zero)
@@ -23,18 +23,20 @@ class EditorStackView: UIStackView {
         self.distribution = .fill
         self.spacing = 5
         
-        self.imageView = configureImageView()
-        self.buttonStack = configureButtonsStack()
+        configureImageView()
+        configureButtonsStack()
+        configureImageCollectionView()
         
-        addArrangedSubview(self.imageView!)
-        addArrangedSubview(self.buttonStack!)
+        addArrangedSubview(self.imageView)
+        addArrangedSubview(self.buttonStack)
+        addArrangedSubview(self.imageCollection)
     }
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureImageView() -> UIImageView {
+    func configureImageView() {
         let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "nice")
@@ -42,11 +44,10 @@ class EditorStackView: UIStackView {
         NSLayoutConstraint.activate([
             imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor)
         ])
-        
-        return imageView
+        self.imageView = imageView
     }
     
-    func configureButtonsStack() -> UIStackView {
+    func configureButtonsStack() {
         let buttonStack = UIStackView(frame: .zero)
         buttonStack.translatesAutoresizingMaskIntoConstraints = false
         buttonStack.axis = .horizontal
@@ -61,11 +62,16 @@ class EditorStackView: UIStackView {
         buttonStack.addArrangedSubview(bwButton)
         buttonStack.addArrangedSubview(mirrorButton)
         
+        self.buttonStack = buttonStack
         self.rotateButton = rotateButton
         self.bwButton = bwButton
         self.mirrorButton = mirrorButton
-        
-        return buttonStack
+    }
+    
+    func configureImageCollectionView() {
+        let imageCollection = CollectionView()
+        imageCollection.translatesAutoresizingMaskIntoConstraints = false
+        self.imageCollection = imageCollection
     }
     
     func rotateImage() {

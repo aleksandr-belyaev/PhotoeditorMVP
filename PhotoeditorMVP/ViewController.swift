@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController, PresentEditorView, UIGestureRecognizerDelegate {
     
-    weak var editorStackView: EditorStackView!
+    weak var mainStackView: MainStackView!
     lazy var presenter = Presenter(editorView: self)
     //TODO: возможно, стоит переделать на опционал
     var changeImageAlert = UIAlertController()
@@ -17,28 +17,28 @@ class ViewController: UIViewController, PresentEditorView, UIGestureRecognizerDe
     override func loadView() {
         super.loadView()
         
-        let editorStackView = EditorStackView()
+        let mainStackView = MainStackView()
         
-        self.view.addSubview(editorStackView)
+        self.view.addSubview(mainStackView)
         
         NSLayoutConstraint.activate([
-            editorStackView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            editorStackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            editorStackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10)
+            mainStackView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            mainStackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            mainStackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10)
         ])
         
-        self.editorStackView = editorStackView
+        self.mainStackView = mainStackView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.editorStackView.rotateButton.addTarget(self, action: #selector(rotateImageButtonTapped), for: .touchUpInside)
-        self.editorStackView.bwButton.addTarget(self, action: #selector(bwImageButtonTapped), for: .touchUpInside)
-        self.editorStackView.mirrorButton.addTarget(self, action: #selector(mirrorImageButtonTapped), for: .touchUpInside)
+        self.mainStackView.rotateButton.addTarget(self, action: #selector(rotateImageButtonTapped), for: .touchUpInside)
+        self.mainStackView.bwButton.addTarget(self, action: #selector(bwImageButtonTapped), for: .touchUpInside)
+        self.mainStackView.mirrorButton.addTarget(self, action: #selector(mirrorImageButtonTapped), for: .touchUpInside)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         tapGesture.delegate = self
         //TODO: Понять, почему нельзя назначить жест самому imageView. Возможно, так нельзя потому, что он не объявлен в самом VC и если бы я назначал жест во вьюхе, то было бы ок.
-        self.editorStackView.addGestureRecognizer(tapGesture)
+        self.mainStackView.addGestureRecognizer(tapGesture)
     }
     
     @objc func rotateImageButtonTapped(_ sender: UIButton) {
@@ -76,27 +76,27 @@ class ViewController: UIViewController, PresentEditorView, UIGestureRecognizerDe
     }
     
     func rotateImage() {
-        self.editorStackView.rotateImage()
+        self.mainStackView.rotateImage()
     }
     
     func makeImageBW() {
-        self.editorStackView.makeImageBW()
+        self.mainStackView.makeImageBW()
     }
     
     func mirrorImage() {
-        self.editorStackView.mirrorImage()
+        self.mainStackView.mirrorImage()
     }
     
     func clearImage() {
-        self.editorStackView.clearImage()
+        self.mainStackView.clearImage()
     }
     
     func setImage() {
-        self.editorStackView.setImage()
+        self.mainStackView.setImage()
     }
     
     func saveImage() {
-        self.editorStackView.saveImage()
+        self.mainStackView.saveImage()
     }
 }
 
