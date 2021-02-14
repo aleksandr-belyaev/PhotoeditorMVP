@@ -13,6 +13,7 @@ class EditorStackView: UIStackView {
     var rotateButton: CustomButton!
     var bwButton: CustomButton!
     var mirrorButton: CustomButton!
+    var imageCollection: CollectionViewController!
     
     init() {
         super.init(frame: .zero)
@@ -25,19 +26,8 @@ class EditorStackView: UIStackView {
         self.imageView = configureImageView()
         self.buttonStack = configureButtonsStack()
         
-        let rotateButton = CustomButton(withTitle: "Повернуть")
-        let bwButton = CustomButton(withTitle: "ЧБ")
-        let mirrorButton = CustomButton(withTitle: "Отзеркалить")
-        
-        self.rotateButton = rotateButton
-        self.bwButton = bwButton
-        self.mirrorButton = mirrorButton
-        
         addArrangedSubview(self.imageView!)
         addArrangedSubview(self.buttonStack!)
-        self.buttonStack.addArrangedSubview(rotateButton)
-        self.buttonStack.addArrangedSubview(bwButton)
-        self.buttonStack.addArrangedSubview(mirrorButton)
     }
     
     required init(coder: NSCoder) {
@@ -63,6 +53,17 @@ class EditorStackView: UIStackView {
         buttonStack.alignment = .fill
         buttonStack.distribution = .fillEqually
         buttonStack.spacing = 2
+        
+        let rotateButton = CustomButton(withTitle: "Повернуть")
+        let bwButton = CustomButton(withTitle: "ЧБ")
+        let mirrorButton = CustomButton(withTitle: "Отзеркалить")
+        buttonStack.addArrangedSubview(rotateButton)
+        buttonStack.addArrangedSubview(bwButton)
+        buttonStack.addArrangedSubview(mirrorButton)
+        
+        self.rotateButton = rotateButton
+        self.bwButton = bwButton
+        self.mirrorButton = mirrorButton
         
         return buttonStack
     }
