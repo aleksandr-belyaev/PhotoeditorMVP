@@ -17,11 +17,11 @@ class MainStackView: UIStackView {
     
     init() {
         super.init(frame: .zero)
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.axis = .vertical
-        self.alignment = .fill
-        self.distribution = .fill
-        self.spacing = 5
+        translatesAutoresizingMaskIntoConstraints = false
+        axis = .vertical
+        alignment = .fill
+        distribution = .fill
+        spacing = 5
         
         configureImageView()
         configureButtonsStack()
@@ -71,6 +71,7 @@ class MainStackView: UIStackView {
     func configureImageCollectionView() {
         let imageCollection = CollectionView()
         imageCollection.translatesAutoresizingMaskIntoConstraints = false
+        imageCollection.layoutIfNeeded()
         self.imageCollection = imageCollection
     }
     
@@ -117,4 +118,3 @@ extension UIImage {
         return UIImage()
     }
 }
-

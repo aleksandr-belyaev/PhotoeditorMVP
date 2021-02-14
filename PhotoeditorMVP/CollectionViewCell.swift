@@ -15,7 +15,7 @@ protocol CellDelegate {
 class CollectionViewCell: UICollectionViewCell {
     var delegate: CellDelegate?
     
-    weak var cellImage: UIImage!
+    var cellImage: UIImage!
     
     func cellDeleteImageAction() {
         delegate?.deleteImage(cell: self)
@@ -23,5 +23,9 @@ class CollectionViewCell: UICollectionViewCell {
     
     func cellSaveImageAction() {
         delegate?.saveImage(cell: self)
+    }
+    
+    func setImage(image: UIImage) {
+        self.cellImage = image
     }
 }

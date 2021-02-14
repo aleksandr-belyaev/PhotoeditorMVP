@@ -8,19 +8,19 @@
 import UIKit
 
 class CollectionView: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegate {
+    let data = Model()
     
     init() {
-        super.init(frame: .zero, collectionViewLayout: UICollectionViewLayout())
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
-        layout.itemSize = CGSize(width: 60, height: 60)
+        layout.itemSize = CGSize(width: 100, height: 100)
+        super.init(frame: .zero, collectionViewLayout: layout)
         
-        register(CollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
-        backgroundColor = .red
-        
-        dataSource = self
-        delegate = self
-        
+        self.register(CollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
+        self.backgroundColor = .none
+        self.dataSource = self
+        self.delegate = self
+        self.backgroundColor = .red
     }
     
     required init?(coder: NSCoder) {
@@ -28,13 +28,16 @@ class CollectionView: UICollectionView, UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 5//data.savedImages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath)
-        myCell.backgroundColor = UIColor.blue
-        return myCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as! CollectionViewCell
+        
+        let image = UIImage(named: "hate")!//data.savedImages[indexPath.row].image
+        cell.setImage(image: image)
+        cell.backgroundColor = .black
+        return cell
     }
     
 }

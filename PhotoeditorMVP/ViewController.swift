@@ -7,26 +7,26 @@
 
 import UIKit
 
-class ViewController: UIViewController, PresentEditorView, UIGestureRecognizerDelegate {
+class ViewController: UIViewController, PresentEditorView, UIGestureRecognizerDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
     
     weak var mainStackView: MainStackView!
     lazy var presenter = Presenter(editorView: self)
     //TODO: возможно, стоит переделать на опционал
     var changeImageAlert = UIAlertController()
+    var myCollectionView:UICollectionView?
     
     override func loadView() {
         super.loadView()
-        
         let mainStackView = MainStackView()
         
-        self.view.addSubview(mainStackView)
+        view.addSubview(mainStackView)
         
         NSLayoutConstraint.activate([
             mainStackView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 10),
             mainStackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            mainStackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10)
+            mainStackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            mainStackView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -10)
         ])
-        
         self.mainStackView = mainStackView
     }
     
@@ -97,6 +97,24 @@ class ViewController: UIViewController, PresentEditorView, UIGestureRecognizerDe
     
     func saveImage() {
         self.mainStackView.saveImage()
+    }
+}
+
+extension ViewController {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 9 // How many cells to display
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath)
+        myCell.backgroundColor = UIColor.blue
+        return myCell
+    }
+}
+extension ViewController {
+ 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+       print("User tapped on item \(indexPath.row)")
     }
 }
 
