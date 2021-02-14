@@ -11,6 +11,9 @@ protocol PresentEditorView {
     func rotateImage()
     func makeImageBW()
     func mirrorImage()
+    func clearImage()
+    func setImage()
+    func saveImage()
 }
 
 protocol PresentSavedImagesView {
@@ -35,6 +38,14 @@ class Presenter {
     
     func mirrorImageButtonTapped() {
         self.editorView?.mirrorImage()
+    }
+    
+    func clearImageButtonTapped() {
+        self.editorView?.clearImage()
+    }
+    
+    func setImageButtonTapped() {
+        self.editorView?.setImage()
     }
     
 }

@@ -8,11 +8,11 @@
 import UIKit
 
 class EditorStackView: UIStackView {
-    var imageView: UIImageView?
-    var buttonStack: UIStackView?
-    var rotateButton: CustomButton?
-    var bwButton: CustomButton?
-    var mirrorButton: CustomButton?
+    var imageView: UIImageView!
+    var buttonStack: UIStackView!
+    var rotateButton: CustomButton!
+    var bwButton: CustomButton!
+    var mirrorButton: CustomButton!
     
     init() {
         super.init(frame: .zero)
@@ -35,9 +35,9 @@ class EditorStackView: UIStackView {
         
         addArrangedSubview(self.imageView!)
         addArrangedSubview(self.buttonStack!)
-        self.buttonStack!.addArrangedSubview(rotateButton)
-        self.buttonStack!.addArrangedSubview(bwButton)
-        self.buttonStack!.addArrangedSubview(mirrorButton)
+        self.buttonStack.addArrangedSubview(rotateButton)
+        self.buttonStack.addArrangedSubview(bwButton)
+        self.buttonStack.addArrangedSubview(mirrorButton)
     }
     
     required init(coder: NSCoder) {
@@ -68,19 +68,31 @@ class EditorStackView: UIStackView {
     }
     
     func rotateImage() {
-        self.imageView!.transform = imageView!.transform.rotated(by: .pi/2)
+        self.imageView.transform = imageView!.transform.rotated(by: .pi/2)
     }
     
     func makeImageBW() {
-        if let image = imageView!.image {
-            self.imageView!.image = image.grayscaleImage()
+        if let image = imageView.image {
+            self.imageView.image = image.grayscaleImage()
         }
     }
     
     func mirrorImage() {
         if let image = imageView!.image {
-            self.imageView!.image = image.withHorizontallyFlippedOrientation()
+            self.imageView.image = image.withHorizontallyFlippedOrientation()
         }
+    }
+    
+    func clearImage() {
+        self.imageView.image = nil
+    }
+    
+    func setImage() {
+        self.imageView.image = UIImage(named: "nice")
+    }
+    
+    func saveImage() {
+        //
     }
 }
 
