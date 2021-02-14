@@ -92,7 +92,7 @@ class EditorStackView: UIStackView {
     }
     
     func saveImage() {
-        //
+        //TODO: сохранять изображение в коллекшн вью
     }
 }
 

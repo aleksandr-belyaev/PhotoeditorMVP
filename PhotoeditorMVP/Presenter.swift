@@ -48,4 +48,8 @@ class Presenter {
         self.editorView?.setImage()
     }
     
+    func saveImageButtonTapped() {
+        self.editorView?.saveImage()
+    }
+    
 }

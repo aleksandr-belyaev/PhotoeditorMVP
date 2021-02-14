@@ -16,6 +16,7 @@
 		E75B4E9025D82816001E858D /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75B4E8F25D82816001E858D /* Presenter.swift */; };
 		E75B4E9325D8337C001E858D /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75B4E9225D8337C001E858D /* CustomButton.swift */; };
 		E75B4E9625D83793001E858D /* MainStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75B4E9525D83793001E858D /* MainStackView.swift */; };
+		E770DF7325D9686F007E8086 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = E770DF7225D9686F007E8086 /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		E75B4E8F25D82816001E858D /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		E75B4E9225D8337C001E858D /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		E75B4E9525D83793001E858D /* MainStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStackView.swift; sourceTree = "<group>"; };
+		E770DF7225D9686F007E8086 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				E75B4E7C25D827A0001E858D /* SceneDelegate.swift */,
 				E75B4E7E25D827A0001E858D /* ViewController.swift */,
 				E75B4E9525D83793001E858D /* MainStackView.swift */,
+				E770DF7225D9686F007E8086 /* Model.swift */,
 				E75B4E9225D8337C001E858D /* CustomButton.swift */,
 				E75B4E8F25D82816001E858D /* Presenter.swift */,
 				E75B4E8025D827A0001E858D /* Main.storyboard */,
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E770DF7325D9686F007E8086 /* Model.swift in Sources */,
 				E75B4E7F25D827A0001E858D /* ViewController.swift in Sources */,
 				E75B4E7B25D827A0001E858D /* AppDelegate.swift in Sources */,
 				E75B4E9625D83793001E858D /* MainStackView.swift in Sources */,
