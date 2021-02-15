@@ -8,7 +8,7 @@
 import UIKit
 
 class CollectionView: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegate {
-    let data = Model()
+    var data: Model?
     
     init() {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -27,14 +27,24 @@ class CollectionView: UICollectionView, UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.savedImages.count
+        if data != nil {
+            return data!.savedImages.count
+        } else {
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as! CollectionViewCell
-        let image = data.savedImages[indexPath.row].image
+        let image = data!.savedImages[indexPath.row].image
         cell.setImage(image: image)
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("User tapped on item \(indexPath.row)")
+    }
+    
 }
+
+

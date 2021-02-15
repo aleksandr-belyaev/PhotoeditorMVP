@@ -7,22 +7,14 @@
 
 import UIKit
 
-protocol CellDelegate {
-    func deleteImage(cell: CollectionViewCell)
-    func saveImage(cell: CollectionViewCell)
-}
-
 class CollectionViewCell: UICollectionViewCell {
-    var delegate: CellDelegate?
     
     var cellImage: UIImageView!
     
     func cellDeleteImageAction() {
-        delegate?.deleteImage(cell: self)
     }
     
     func cellSaveImageAction() {
-        delegate?.saveImage(cell: self)
     }
     
     func setImage(image: UIImage) {

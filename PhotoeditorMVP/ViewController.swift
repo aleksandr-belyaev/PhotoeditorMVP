@@ -7,13 +7,14 @@
 
 import UIKit
 
-class ViewController: UIViewController, PresentEditorView, UIGestureRecognizerDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
+class ViewController: UIViewController, PresentEditorView, UIGestureRecognizerDelegate {
     
     weak var mainStackView: MainStackView!
     lazy var presenter = Presenter(editorView: self)
     //TODO: возможно, стоит переделать на опционал
     var changeImageAlert = UIAlertController()
     var myCollectionView:UICollectionView?
+    var data = Model()
     
     override func loadView() {
         super.loadView()
@@ -38,6 +39,8 @@ class ViewController: UIViewController, PresentEditorView, UIGestureRecognizerDe
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         tapGesture.delegate = self
         self.mainStackView.imageView.addGestureRecognizer(tapGesture)
+        self.mainStackView.imageCollection.data = data
+        self.mainStackView.imageCollection.reloadData()
     }
     
     @objc func rotateImageButtonTapped(_ sender: UIButton) {
@@ -95,25 +98,9 @@ class ViewController: UIViewController, PresentEditorView, UIGestureRecognizerDe
     }
     
     func saveImage() {
-        self.mainStackView.saveImage()
+        if let image = self.mainStackView.saveImage() {
+            data.addImage(image: image)
+            self.mainStackView.imageCollection.reloadData()
+        }
     }
 }
-
-extension ViewController {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9 // How many cells to display
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath)
-        myCell.backgroundColor = UIColor.blue
-        return myCell
-    }
-}
-extension ViewController {
- 
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       print("User tapped on item \(indexPath.row)")
-    }
-}
-

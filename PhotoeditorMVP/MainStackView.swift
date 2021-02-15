@@ -100,8 +100,12 @@ class MainStackView: UIStackView {
         self.imageView.image = UIImage(named: "nice")
     }
     
-    func saveImage() {
-        //TODO: сохранять изображение в коллекшн вью
+    func saveImage() -> UIImage? {
+        if let image = self.imageView.image {
+            return image
+        } else {
+            return nil
+        }
     }
 }
 

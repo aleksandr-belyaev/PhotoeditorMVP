@@ -23,8 +23,8 @@ class Model {
         Item(image: UIImage(named: "hate")!)
     ]
     
-    func addImage() {
-        
+    func addImage(image: UIImage) {
+        self.savedImages.append(Item(image: image))
     }
     
     func removeImage(at index: Int) {
