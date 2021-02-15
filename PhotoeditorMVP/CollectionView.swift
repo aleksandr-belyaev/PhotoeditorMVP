@@ -27,12 +27,12 @@ class CollectionView: UICollectionView, UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5//data.savedImages.count
+        return data.savedImages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as! CollectionViewCell
-        let image = UIImage(named: "hate")!//data.savedImages[indexPath.row].image
+        let image = data.savedImages[indexPath.row].image
         cell.setImage(image: image)
         return cell
     }

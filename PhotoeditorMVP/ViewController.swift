@@ -63,7 +63,7 @@ class ViewController: UIViewController, PresentEditorView, UIGestureRecognizerDe
             (_) in
             self.presenter.setImageButtonTapped()
         }
-        let saveImageAlertAction = UIAlertAction (title: "Сохранить", style: .default) {
+        let saveImageAlertAction = UIAlertAction (title: "wip Сохранить", style: .default) {
             (_) in
             self.presenter.saveImageButtonTapped()
         }

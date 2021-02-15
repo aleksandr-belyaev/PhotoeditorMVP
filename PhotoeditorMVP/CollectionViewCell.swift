@@ -28,7 +28,7 @@ class CollectionViewCell: UICollectionViewCell {
     func setImage(image: UIImage) {
         
         let imageView = UIImageView(frame: .zero)
-        imageView.image = UIImage(named: "nice")
+        imageView.image = image
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
