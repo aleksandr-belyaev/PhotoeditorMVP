@@ -37,8 +37,7 @@ class ViewController: UIViewController, PresentEditorView, UIGestureRecognizerDe
         self.mainStackView.mirrorButton.addTarget(self, action: #selector(mirrorImageButtonTapped), for: .touchUpInside)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         tapGesture.delegate = self
-        //TODO: Понять, почему нельзя назначить жест самому imageView. Возможно, так нельзя потому, что он не объявлен в самом VC и если бы я назначал жест во вьюхе, то было бы ок.
-        self.mainStackView.addGestureRecognizer(tapGesture)
+        self.mainStackView.imageView.addGestureRecognizer(tapGesture)
     }
     
     @objc func rotateImageButtonTapped(_ sender: UIButton) {

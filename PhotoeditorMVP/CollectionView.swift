@@ -20,7 +20,6 @@ class CollectionView: UICollectionView, UICollectionViewDataSource, UICollection
         self.backgroundColor = .none
         self.dataSource = self
         self.delegate = self
-        self.backgroundColor = .red
     }
     
     required init?(coder: NSCoder) {
@@ -33,10 +32,8 @@ class CollectionView: UICollectionView, UICollectionViewDataSource, UICollection
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as! CollectionViewCell
-        
         let image = UIImage(named: "hate")!//data.savedImages[indexPath.row].image
         cell.setImage(image: image)
-        cell.backgroundColor = .black
         return cell
     }
     

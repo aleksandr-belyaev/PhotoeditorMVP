@@ -39,6 +39,7 @@ class MainStackView: UIStackView {
     func configureImageView() {
         let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.isUserInteractionEnabled = true
         imageView.image = UIImage(named: "nice")
         
         NSLayoutConstraint.activate([
