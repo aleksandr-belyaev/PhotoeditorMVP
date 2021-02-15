@@ -18,10 +18,7 @@ class Item {
 
 class Model {
     
-    var savedImages: [Item] = [
-        Item(image: UIImage(named: "nice")!),
-        Item(image: UIImage(named: "hate")!)
-    ]
+    var savedImages: [Item] = []
     
     func addImage(image: UIImage) {
         self.savedImages.append(Item(image: image))
