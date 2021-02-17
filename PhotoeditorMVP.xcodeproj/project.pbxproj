@@ -19,6 +19,7 @@
 		E770DF7325D9686F007E8086 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = E770DF7225D9686F007E8086 /* Model.swift */; };
 		E770DF7925D96AD8007E8086 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E770DF7825D96AD8007E8086 /* CollectionViewCell.swift */; };
 		E770DF7C25D96E88007E8086 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E770DF7B25D96E88007E8086 /* CollectionView.swift */; };
+		E7AB58D925DD460600B71126 /* ImageRedactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AB58D825DD460600B71126 /* ImageRedactor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		E770DF7225D9686F007E8086 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		E770DF7825D96AD8007E8086 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		E770DF7B25D96E88007E8086 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
+		E7AB58D825DD460600B71126 /* ImageRedactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRedactor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				E75B4E7C25D827A0001E858D /* SceneDelegate.swift */,
 				E75B4E7E25D827A0001E858D /* ViewController.swift */,
 				E75B4E9525D83793001E858D /* MainStackView.swift */,
+				E7AB58D825DD460600B71126 /* ImageRedactor.swift */,
 				E770DF7225D9686F007E8086 /* Model.swift */,
 				E770DF7B25D96E88007E8086 /* CollectionView.swift */,
 				E770DF7825D96AD8007E8086 /* CollectionViewCell.swift */,
@@ -162,6 +165,7 @@
 				E75B4E9625D83793001E858D /* MainStackView.swift in Sources */,
 				E770DF7C25D96E88007E8086 /* CollectionView.swift in Sources */,
 				E75B4E9025D82816001E858D /* Presenter.swift in Sources */,
+				E7AB58D925DD460600B71126 /* ImageRedactor.swift in Sources */,
 				E75B4E7D25D827A0001E858D /* SceneDelegate.swift in Sources */,
 				E75B4E9325D8337C001E858D /* CustomButton.swift in Sources */,
 			);
