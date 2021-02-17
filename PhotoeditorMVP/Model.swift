@@ -8,27 +8,6 @@
 import Foundation
 import UIKit
 
-class Item {
-    var image: UIImage
-    
-    init(image: UIImage) {
-        self.image = image
-    }
-}
-
 class Model {
-    
-    var savedImages: [Item] = []
-    
-    func addImage(image: UIImage) {
-        self.savedImages.append(Item(image: image))
-    }
-    
-    func removeImage(at index: Int) {
-        
-    }
-    
-    func saveImage() {
-        
-    }
+    var savedImages: [UIImage] = []
 }

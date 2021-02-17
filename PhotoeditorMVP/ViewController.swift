@@ -7,14 +7,13 @@
 
 import UIKit
 
-class ViewController: UIViewController, PresentEditorView, UIGestureRecognizerDelegate {
+class ViewController: UIViewController, UIGestureRecognizerDelegate {
     
-    weak var mainStackView: MainStackView!
-    lazy var presenter = Presenter(editorView: self)
+    public var mainStackView: MainStackView!
     //TODO: возможно, стоит переделать на опционал
     var changeImageAlert = UIAlertController()
-    var myCollectionView:UICollectionView?
-    var data = Model()
+    lazy var presenter = Presenter(editorView: self.mainStackView)
+    
     
     override func loadView() {
         super.loadView()
@@ -39,12 +38,11 @@ class ViewController: UIViewController, PresentEditorView, UIGestureRecognizerDe
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         tapGesture.delegate = self
         self.mainStackView.imageView.addGestureRecognizer(tapGesture)
-        self.mainStackView.imageCollection.data = data
         self.mainStackView.imageCollection.reloadData()
     }
     
     @objc func rotateImageButtonTapped(_ sender: UIButton) {
-        presenter.rotateButtonTapped()
+        presenter.rotateImageButtonTapped()
     }
     
     @objc func bwImageButtonTapped(_ sender: UIButton) {
@@ -75,32 +73,5 @@ class ViewController: UIViewController, PresentEditorView, UIGestureRecognizerDe
         changeImageAlert.addAction(setImageAlertAction)
         changeImageAlert.addAction(saveImageAlertAction)
         present(changeImageAlert, animated: true, completion: nil)
-    }
-    
-    func rotateImage() {
-        self.mainStackView.rotateImage()
-    }
-    
-    func makeImageBW() {
-        self.mainStackView.makeImageBW()
-    }
-    
-    func mirrorImage() {
-        self.mainStackView.mirrorImage()
-    }
-    
-    func clearImage() {
-        self.mainStackView.clearImage()
-    }
-    
-    func setImage() {
-        self.mainStackView.setImage()
-    }
-    
-    func saveImage() {
-        if let image = self.mainStackView.saveImage() {
-            data.addImage(image: image)
-            self.mainStackView.imageCollection.reloadData()
-        }
     }
 }

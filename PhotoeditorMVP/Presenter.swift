@@ -7,49 +7,48 @@
 
 import Foundation
 
-protocol PresentEditorView {
-    func rotateImage()
-    func makeImageBW()
-    func mirrorImage()
-    func clearImage()
-    func setImage()
-    func saveImage()
-}
-
-protocol PresentSavedImagesView {
-    func showImage()
-    func deleteImage()
-}
-
 class Presenter {
-    var editorView: PresentEditorView?
+    var mainStackView: MainStackView!
+    var imageRedactor = ImageRedactor()
+    var data: Model!
     
-    init(editorView: PresentEditorView) {
-        self.editorView = editorView
+    init(editorView: MainStackView) {
+        self.mainStackView = editorView
+        let data = Model()
+        self.data = data
     }
     
-    func rotateButtonTapped() {
-        self.editorView?.rotateImage()
+    func rotateImageButtonTapped() {
+        if let image = self.mainStackView.imageView.image {
+            self.mainStackView.imageView.image = image.rotateImage(radians: .pi/2)
+        }
     }
     
     func bwButtonTapped() {
-        self.editorView?.makeImageBW()
+        if let image = self.mainStackView.imageView.image {
+            self.mainStackView.imageView.image = image.grayscaleImage()
+        }
     }
     
     func mirrorImageButtonTapped() {
-        self.editorView?.mirrorImage()
+        if let image = self.mainStackView.imageView.image {
+            self.mainStackView.imageView.image = imageRedactor.mirrorImage(image: image)
+        }
     }
     
     func clearImageButtonTapped() {
-        self.editorView?.clearImage()
+        self.mainStackView.imageView.image = nil
     }
     
     func setImageButtonTapped() {
-        self.editorView?.setImage()
+        self.mainStackView.imageView.image = imageRedactor.setDefaultImage()
     }
     
     func saveImageButtonTapped() {
-        self.editorView?.saveImage()
+        if let image = self.mainStackView.imageView.image {
+            data.savedImages.append(image)
+            self.mainStackView.imageCollection.images = data.savedImages
+            self.mainStackView.imageCollection.reloadData()
+        }
     }
-    
 }

@@ -8,7 +8,7 @@
 import UIKit
 
 class CollectionView: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegate {
-    var data: Model?
+    var images: [UIImage]?
     
     init() {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -27,8 +27,8 @@ class CollectionView: UICollectionView, UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if data != nil {
-            return data!.savedImages.count
+        if images != nil {
+            return images!.count
         } else {
             return 0
         }
@@ -36,8 +36,9 @@ class CollectionView: UICollectionView, UICollectionViewDataSource, UICollection
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as! CollectionViewCell
-        let image = data!.savedImages[indexPath.row].image
-        cell.setImage(image: image)
+        if let image = images?[indexPath.row] {
+            cell.setImage(image: image)
+        }
         return cell
     }
     
