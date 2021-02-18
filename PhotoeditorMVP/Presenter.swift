@@ -8,72 +8,65 @@
 import Foundation
 
 class Presenter {
-    var viewController: ViewController
+    var mainStackView: MainStackView
     var imageRedactor = ImageRedactor()
     var data: Model
     
-    init(editorView: ViewController) {
-        self.viewController = editorView
+    init(editorView: MainStackView) {
+        self.mainStackView = editorView
         let data = Model()
         self.data = data
-        self.viewController.mainStackView.rotateImageButtonTapHandler = { [weak self] in
+        self.mainStackView.rotateImageButtonTapHandler = { [weak self] in
             self?.rotateImageButtonTapped()
         }
-        self.viewController.mainStackView.bwImageButtonTapHandler = { [weak self] in
+        self.mainStackView.bwImageButtonTapHandler = { [weak self] in
             self?.bwButtonTapped()
         }
-        self.viewController.mainStackView.mirrorImageButtonTapHandler = { [weak self] in
+        self.mainStackView.mirrorImageButtonTapHandler = { [weak self] in
             self?.mirrorImageButtonTapped()
         }
-        self.viewController.mainStackView.showAlertHandler = { [weak self] in
-            self?.showAlert()
-        }
-        self.viewController.mainStackView.clearImageHandler = { [weak self] in
+        self.mainStackView.clearImageHandler = { [weak self] in
             self?.clearImageButtonTapped()
         }
-        self.viewController.mainStackView.setImageHandler = { [weak self] in
+        self.mainStackView.setImageHandler = { [weak self] in
             self?.setImageButtonTapped()
         }
-        self.viewController.mainStackView.saveImageHandler = { [weak self] in
+        self.mainStackView.saveImageHandler = { [weak self] in
             self?.saveImageButtonTapped()
         }
     }
     
     func rotateImageButtonTapped() {
-        if let image = self.viewController.mainStackView.imageView.image {
-            self.viewController.mainStackView.imageView.image = image.rotateImage(radians: .pi/2)
+        if let image = self.mainStackView.imageView.image {
+            self.mainStackView.imageView.image = image.rotateImage(radians: .pi/2)
         }
     }
     
     func bwButtonTapped() {
-        if let image = self.viewController.mainStackView.imageView.image {
-            self.viewController.mainStackView.imageView.image = image.grayscaleImage()
+        if let image = self.mainStackView.imageView.image {
+            self.mainStackView.imageView.image = image.grayscaleImage()
         }
     }
     
     func mirrorImageButtonTapped() {
-        if let image = self.viewController.mainStackView.imageView.image {
-            self.viewController.mainStackView.imageView.image = imageRedactor.mirrorImage(image: image)
+        if let image = self.mainStackView.imageView.image {
+            self.mainStackView.imageView.image = imageRedactor.mirrorImage(image: image)
         }
     }
     
-    func showAlert() {
-        self.viewController.present(self.viewController.mainStackView.imageTapAlert, animated: true)
-    }
-    
     func clearImageButtonTapped() {
-        self.viewController.mainStackView.imageView.image = nil
+        self.mainStackView.imageView.image = nil
     }
     
     func setImageButtonTapped() {
-        self.viewController.mainStackView.imageView.image = imageRedactor.setDefaultImage()
+        self.mainStackView.imageView.image = imageRedactor.setDefaultImage()
     }
     
     func saveImageButtonTapped() {
-        if let image = self.viewController.mainStackView.imageView.image {
+        if let image = self.mainStackView.imageView.image {
             data.savedImages.append(image)
-            self.viewController.mainStackView.imageCollection.images = data.savedImages
-            self.viewController.mainStackView.imageCollection.reloadData()
+            self.mainStackView.imageCollection.images = data.savedImages
+            self.mainStackView.imageCollection.reloadData()
         }
     }
 }
