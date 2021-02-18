@@ -7,9 +7,10 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIGestureRecognizerDelegate {
+class ViewController: UIViewController {
     
     var mainStackView: MainStackView!
+    var presenter: Presenter!
     
     override func loadView() {
         super.loadView()
@@ -22,5 +23,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             mainStackView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -10)
         ])
         self.mainStackView = mainStackView
+        self.presenter = Presenter(editorView: self)
     }
 }

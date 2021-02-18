@@ -12,7 +12,10 @@ class MainStackView: UIStackView, UIGestureRecognizerDelegate {
     var rotateImageButtonTapHandler: (() -> Void)?
     var bwImageButtonTapHandler: (() -> Void)?
     var mirrorImageButtonTapHandler: (() -> Void)?
-    var imageTapHandler: (() -> Void)?
+    var showAlertHandler: (() -> Void)?
+    var clearImageHandler: (() -> Void)?
+    var setImageHandler: (() -> Void)?
+    var saveImageHandler: (() -> Void)?
     
     var imageView: UIImageView!
     var buttonStack: UIStackView!
@@ -21,8 +24,7 @@ class MainStackView: UIStackView, UIGestureRecognizerDelegate {
     var mirrorButton: CustomButton!
     var imageCollection: CollectionView!
     var imageTapAlert: UIAlertController!
-    var presenter: Presenter!
-
+    
     init() {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
@@ -42,17 +44,36 @@ class MainStackView: UIStackView, UIGestureRecognizerDelegate {
         self.rotateButton.addTarget(self, action: #selector(rotateImageButtonTapped), for: .touchUpInside)
         self.bwButton.addTarget(self, action: #selector(bwImageButtonTapped), for: .touchUpInside)
         self.mirrorButton.addTarget(self, action: #selector(mirrorImageButtonTapped), for: .touchUpInside)
-        self.presenter = Presenter(editorView: self)
         
+        configAlert()
+    }
+    
+    func configAlert() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         tapGesture.delegate = self
         self.imageView.addGestureRecognizer(tapGesture)
         let imageTapAlert = UIAlertController(title: "Выберите действие", message: nil, preferredStyle: .alert)
         self.imageTapAlert = imageTapAlert
+        let clearImageAlertAction = UIAlertAction(title: "Очистить", style: .default) {
+            (_) in
+            self.clearImageHandler?()
+        }
+        let setImageAlertAction = UIAlertAction (title: "Поставить дефолтное", style: .default) {
+            (_) in
+            self.setImageHandler?()
+        }
+        let saveImageAlertAction = UIAlertAction (title: "Сохранить", style: .default) {
+            (_) in
+            self.saveImageHandler?()
+        }
+        
+        imageTapAlert.addAction(clearImageAlertAction)
+        imageTapAlert.addAction(setImageAlertAction)
+        imageTapAlert.addAction(saveImageAlertAction)
     }
     
     @objc func imageTapped(_ gesture: UIGestureRecognizer) {
-        self.imageTapHandler?()
+        self.showAlertHandler?()
     }
     
     required init(coder: NSCoder) {
