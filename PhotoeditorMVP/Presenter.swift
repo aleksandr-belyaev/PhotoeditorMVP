@@ -10,12 +10,14 @@ import Foundation
 class Presenter {
     var mainStackView: MainStackView
     var imageRedactor = ImageRedactor()
+    var presentMethod: () -> Void
     var data: Model
     
-    init(editorView: MainStackView) {
+    init(editorView: MainStackView, method: @escaping () -> Void) {
         self.mainStackView = editorView
         let data = Model()
         self.data = data
+        self.presentMethod = method
         self.mainStackView.rotateImageButtonTapHandler = { [weak self] in
             self?.rotateImageButtonTapped()
         }
@@ -24,6 +26,9 @@ class Presenter {
         }
         self.mainStackView.mirrorImageButtonTapHandler = { [weak self] in
             self?.mirrorImageButtonTapped()
+        }
+        self.mainStackView.showAlertHandler = { [weak self] in
+            self?.showAlert()
         }
         self.mainStackView.clearImageHandler = { [weak self] in
             self?.clearImageButtonTapped()
@@ -52,6 +57,10 @@ class Presenter {
         if let image = self.mainStackView.imageView.image {
             self.mainStackView.imageView.image = imageRedactor.mirrorImage(image: image)
         }
+    }
+    
+    func showAlert() {
+        self.presentMethod()
     }
     
     func clearImageButtonTapped() {

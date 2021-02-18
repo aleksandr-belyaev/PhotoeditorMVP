@@ -23,8 +23,7 @@ class ViewController: UIViewController {
             mainStackView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -10)
         ])
         self.mainStackView = mainStackView
-        self.presenter = Presenter(editorView: self.mainStackView)
-        self.mainStackView.showAlertHandler = { () in
+        self.presenter = Presenter(editorView: self.mainStackView) {
             self.present(mainStackView.imageTapAlert, animated: true)
         }
     }
