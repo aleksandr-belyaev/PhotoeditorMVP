@@ -8,14 +8,26 @@
 import Foundation
 
 class Presenter {
-    var mainStackView: MainStackView!
+    var mainStackView: MainStackView
     var imageRedactor = ImageRedactor()
-    var data: Model!
+    var data: Model
     
     init(editorView: MainStackView) {
         self.mainStackView = editorView
         let data = Model()
         self.data = data
+        self.mainStackView.rotateImageButtonTapHandler = { [weak self] in
+            self?.rotateImageButtonTapped()
+        }
+        self.mainStackView.bwImageButtonTapHandler = { [weak self] in
+            self?.bwButtonTapped()
+        }
+        self.mainStackView.mirrorImageButtonTapHandler = { [weak self] in
+            self?.mirrorImageButtonTapped()
+        }
+        self.mainStackView.imageTapHandler = { [weak self] in
+            self?.imageTapped()
+        }
     }
     
     func rotateImageButtonTapped() {
@@ -34,6 +46,10 @@ class Presenter {
         if let image = self.mainStackView.imageView.image {
             self.mainStackView.imageView.image = imageRedactor.mirrorImage(image: image)
         }
+    }
+    
+    func imageTapped() {
+        print("Taped!")
     }
     
     func clearImageButtonTapped() {

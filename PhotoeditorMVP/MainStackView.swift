@@ -7,7 +7,12 @@
 
 import UIKit
 
-class MainStackView: UIStackView  {
+class MainStackView: UIStackView, UIGestureRecognizerDelegate {
+    
+    var rotateImageButtonTapHandler: (() -> Void)?
+    var bwImageButtonTapHandler: (() -> Void)?
+    var mirrorImageButtonTapHandler: (() -> Void)?
+    var imageTapHandler: (() -> Void)?
     
     var imageView: UIImageView!
     var buttonStack: UIStackView!
@@ -15,7 +20,9 @@ class MainStackView: UIStackView  {
     var bwButton: CustomButton!
     var mirrorButton: CustomButton!
     var imageCollection: CollectionView!
-    
+    var imageTapAlert: UIAlertController!
+    var presenter: Presenter!
+
     init() {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
@@ -31,6 +38,21 @@ class MainStackView: UIStackView  {
         addArrangedSubview(self.imageView)
         addArrangedSubview(self.buttonStack)
         addArrangedSubview(self.imageCollection)
+        
+        self.rotateButton.addTarget(self, action: #selector(rotateImageButtonTapped), for: .touchUpInside)
+        self.bwButton.addTarget(self, action: #selector(bwImageButtonTapped), for: .touchUpInside)
+        self.mirrorButton.addTarget(self, action: #selector(mirrorImageButtonTapped), for: .touchUpInside)
+        self.presenter = Presenter(editorView: self)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        tapGesture.delegate = self
+        self.imageView.addGestureRecognizer(tapGesture)
+        let imageTapAlert = UIAlertController(title: "Выберите действие", message: nil, preferredStyle: .alert)
+        self.imageTapAlert = imageTapAlert
+    }
+    
+    @objc func imageTapped(_ gesture: UIGestureRecognizer) {
+        self.imageTapHandler?()
     }
     
     required init(coder: NSCoder) {
@@ -75,5 +97,17 @@ class MainStackView: UIStackView  {
         imageCollection.translatesAutoresizingMaskIntoConstraints = false
         imageCollection.layoutIfNeeded()
         self.imageCollection = imageCollection
+    }
+    
+    @objc func rotateImageButtonTapped(_ sender: UIButton) {
+        self.rotateImageButtonTapHandler?()
+    }
+    
+    @objc func bwImageButtonTapped(_ sender: UIButton) {
+        self.bwImageButtonTapHandler?()
+    }
+    
+    @objc func mirrorImageButtonTapped(_ sender: UIButton) {
+        self.mirrorImageButtonTapHandler?()
     }
 }
