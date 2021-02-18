@@ -7,7 +7,8 @@
 
 import UIKit
 
-class MainStackView: UIStackView {
+class MainStackView: UIStackView  {
+    
     var imageView: UIImageView!
     var buttonStack: UIStackView!
     var rotateButton: CustomButton!
@@ -74,52 +75,5 @@ class MainStackView: UIStackView {
         imageCollection.translatesAutoresizingMaskIntoConstraints = false
         imageCollection.layoutIfNeeded()
         self.imageCollection = imageCollection
-    }
-    
-    func rotateImage() {
-        self.imageView.transform = imageView!.transform.rotated(by: .pi/2)
-    }
-    
-    func makeImageBW() {
-        if let image = imageView.image {
-            self.imageView.image = image.grayscaleImage()
-        }
-    }
-    
-    func mirrorImage() {
-        if let image = imageView!.image {
-            self.imageView.image = image.withHorizontallyFlippedOrientation()
-        }
-    }
-    
-    func clearImage() {
-        self.imageView.image = nil
-    }
-    
-    func setImage() {
-        self.imageView.image = UIImage(named: "nice")
-    }
-    
-    func saveImage() -> UIImage? {
-        if let image = self.imageView.image {
-            return image
-        } else {
-            return nil
-        }
-    }
-}
-
-extension UIImage {
-    func grayscaleImage() -> UIImage {
-        if let ciImage = CoreImage.CIImage(image: self, options: nil) {
-            let paramsColor: [String : AnyObject] = [ kCIInputSaturationKey: NSNumber(value: 0.0) ]
-            
-            let grayscale = ciImage.applyingFilter("CIColorControls", parameters: paramsColor)
-            
-            if let processedCGImage = CIContext().createCGImage(grayscale, from: grayscale.extent) {
-                return UIImage(cgImage: processedCGImage, scale: self.scale, orientation: self.imageOrientation)
-            }
-        }
-        return UIImage()
     }
 }
