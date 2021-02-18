@@ -24,8 +24,8 @@ class ViewController: UIViewController {
         ])
         self.mainStackView = mainStackView
         self.presenter = Presenter(editorView: self.mainStackView)
-        self.mainStackView.showAlertHandler = { [weak self] in
-            self?.present(mainStackView.imageTapAlert, animated: true)
+        self.mainStackView.showAlertHandler = { () in
+            self.present(mainStackView.imageTapAlert, animated: true)
         }
     }
 }
