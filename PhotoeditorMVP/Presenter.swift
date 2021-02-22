@@ -39,6 +39,12 @@ class Presenter {
         self.mainStackView.saveImageHandler = { [weak self] in
             self?.saveImageButtonTapped()
         }
+        let alerts = [
+            AlertContent(title: "Очистить", method: self.mainStackView.clearImageHandler),
+            AlertContent(title: "Поставить дефолтное", method: self.mainStackView.setImageHandler),
+            AlertContent(title: "Сохранить", method: self.mainStackView.saveImageHandler)
+        ]
+        self.mainStackView.setAlertContent(alertContent: alerts)
     }
     
     func rotateImageButtonTapped() {

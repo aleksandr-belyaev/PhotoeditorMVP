@@ -3,18 +3,26 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "Presenter.saveImageButtonTapped():Presenter.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "data">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "CollectionView.collectionView(_:numberOfItemsInSection:):CollectionView.swift">
          <PersistentStrings>
             <PersistentString
                value = "images">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MainStackView.configAlert():MainStackView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "alertContent">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Presenter.saveImageButtonTapped():Presenter.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "data">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

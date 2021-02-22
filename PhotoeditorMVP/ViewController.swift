@@ -15,6 +15,9 @@ class ViewController: UIViewController {
     override func loadView() {
         super.loadView()
         let mainStackView = MainStackView()
+        self.presenter = Presenter(editorView: mainStackView) {
+            self.present(mainStackView.imageTapAlert, animated: true)
+        }
         view.addSubview(mainStackView)
         NSLayoutConstraint.activate([
             mainStackView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 10),
@@ -23,8 +26,5 @@ class ViewController: UIViewController {
             mainStackView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -10)
         ])
         self.mainStackView = mainStackView
-        self.presenter = Presenter(editorView: self.mainStackView) {
-            self.present(mainStackView.imageTapAlert, animated: true)
-        }
     }
 }
