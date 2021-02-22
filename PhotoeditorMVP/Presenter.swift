@@ -42,20 +42,20 @@ class Presenter {
     }
     
     func rotateImageButtonTapped() {
-        if let image = self.mainStackView.imageView.image {
-            self.mainStackView.imageView.image = image.rotateImage(radians: .pi/2)
+        if let image = self.mainStackView.getImage() {
+            self.mainStackView.setImage(newImage: image.rotateImage(radians: .pi/2))
         }
     }
     
     func bwButtonTapped() {
-        if let image = self.mainStackView.imageView.image {
-            self.mainStackView.imageView.image = image.grayscaleImage()
+        if let image = self.mainStackView.getImage() {
+            self.mainStackView.setImage(newImage: image.grayscaleImage())
         }
     }
     
     func mirrorImageButtonTapped() {
-        if let image = self.mainStackView.imageView.image {
-            self.mainStackView.imageView.image = imageRedactor.mirrorImage(image: image)
+        if let image = self.mainStackView.getImage() {
+            self.mainStackView.setImage(newImage: imageRedactor.mirrorImage(image: image))
         }
     }
     
@@ -64,18 +64,17 @@ class Presenter {
     }
     
     func clearImageButtonTapped() {
-        self.mainStackView.imageView.image = nil
+        self.mainStackView.setImage(newImage: nil)
     }
     
     func setImageButtonTapped() {
-        self.mainStackView.imageView.image = imageRedactor.setDefaultImage()
+        self.mainStackView.setImage(newImage: imageRedactor.setDefaultImage())
     }
     
     func saveImageButtonTapped() {
-        if let image = self.mainStackView.imageView.image {
+        if let image = self.mainStackView.getImage() {
             data.savedImages.append(image)
-            self.mainStackView.imageCollection.images = data.savedImages
-            self.mainStackView.imageCollection.reloadData()
+            self.mainStackView.updateImageCollection(images: data.savedImages)
         }
     }
 }

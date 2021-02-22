@@ -17,12 +17,12 @@ class MainStackView: UIStackView, UIGestureRecognizerDelegate {
     var setImageHandler: (() -> Void)?
     var saveImageHandler: (() -> Void)?
     
-    var imageView: UIImageView!
-    var buttonStack: UIStackView!
-    var rotateButton: CustomButton!
-    var bwButton: CustomButton!
-    var mirrorButton: CustomButton!
-    var imageCollection: CollectionView!
+    private var imageView: UIImageView!
+    private var buttonStack: UIStackView!
+    private var rotateButton: CustomButton!
+    private var bwButton: CustomButton!
+    private var mirrorButton: CustomButton!
+    private var imageCollection: CollectionView!
     var imageTapAlert: UIAlertController!
     
     init() {
@@ -130,5 +130,18 @@ class MainStackView: UIStackView, UIGestureRecognizerDelegate {
     
     @objc func mirrorImageButtonTapped(_ sender: UIButton) {
         self.mirrorImageButtonTapHandler?()
+    }
+    
+    func setImage(newImage: UIImage?) {
+        self.imageView.image = newImage
+    }
+    
+    func getImage() -> UIImage? {
+        return self.imageView.image
+    }
+    
+    func updateImageCollection(images: [UIImage]) {
+        self.imageCollection.images = images
+        self.imageCollection.reloadData()
     }
 }
