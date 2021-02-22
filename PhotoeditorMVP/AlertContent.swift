@@ -11,8 +11,8 @@ struct Actions {
     let action: UIAlertAction
     
     init(title: String, method: (() -> Void)?) {
-        let action = UIAlertAction(title: title, style: .default) {
-            (_) in method
+        let action = UIAlertAction(title: title, style: .default) { (_) in
+            method!()
         }
         self.action = action
     }
