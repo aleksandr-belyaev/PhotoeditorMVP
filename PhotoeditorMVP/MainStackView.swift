@@ -24,7 +24,6 @@ class MainStackView: UIStackView, UIGestureRecognizerDelegate {
     private var mirrorButton: CustomButton!
     private var imageCollection: CollectionView!
     var imageTapAlert: UIAlertController!
-    var alertContent: [AlertContent]?
     
     init() {
         super.init(frame: .zero)
@@ -46,21 +45,13 @@ class MainStackView: UIStackView, UIGestureRecognizerDelegate {
         self.bwButton.addTarget(self, action: #selector(bwImageButtonTapped), for: .touchUpInside)
         self.mirrorButton.addTarget(self, action: #selector(mirrorImageButtonTapped), for: .touchUpInside)
         
-        configAlert()
-    }
-    
-    func setAlertContent(alertContent: [AlertContent]) {
-        for alert in alertContent {
-            self.imageTapAlert.addAction(alert.action)
-        }
-    }
-    
-    func configAlert() {
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         tapGesture.delegate = self
-        self.imageView.addGestureRecognizer(tapGesture)
-        let imageTapAlert = UIAlertController(title: "Выберите действие", message: nil, preferredStyle: .alert)
-        self.imageTapAlert = imageTapAlert
+        self.imageView.addGestureRecognizer(tapGesture)    }
+    
+    func setAlertContent(alert: UIAlertController) {
+        self.imageTapAlert = alert
     }
     
     @objc func imageTapped(_ gesture: UIGestureRecognizer) {

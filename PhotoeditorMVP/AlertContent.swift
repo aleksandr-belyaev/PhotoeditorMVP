@@ -7,12 +7,25 @@
 
 import UIKit
 
-struct AlertContent {
+struct Actions {
     let action: UIAlertAction
     
     init(title: String, method: (() -> Void)?) {
-        self.action = UIAlertAction(title: title, style: .default) {
+        let action = UIAlertAction(title: title, style: .default) {
             (_) in method
         }
+        self.action = action
+    }
+}
+
+class Alert {
+    var alertController: UIAlertController
+    
+    init(title: String, actions: [Actions]) {
+        let imageTapAlert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        for alert in actions {
+            imageTapAlert.addAction(alert.action)
+        }
+        self.alertController = imageTapAlert
     }
 }
