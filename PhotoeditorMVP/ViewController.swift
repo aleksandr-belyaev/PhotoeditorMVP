@@ -15,8 +15,8 @@ class ViewController: UIViewController {
     override func loadView() {
         super.loadView()
         let mainStackView = MainStackView()
-        self.presenter = Presenter(editorView: mainStackView) {
-            self.present(mainStackView.imageTapAlert, animated: true)
+        self.presenter = Presenter(editorView: mainStackView) { [weak self] in
+            self?.present(mainStackView.imageTapAlert, animated: true)
         }
         view.addSubview(mainStackView)
         NSLayoutConstraint.activate([
