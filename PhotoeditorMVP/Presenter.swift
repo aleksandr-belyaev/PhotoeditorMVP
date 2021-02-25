@@ -8,61 +8,52 @@
 import Foundation
 
 class Presenter {
-    var mainStackView: MainStackView
+    var mainView: MainViewProtocol
     var imageRedactor = ImageRedactor()
     var presentMethod: () -> Void
     var data: Model
     
     init(editorView: MainStackView, method: @escaping () -> Void) {
-        self.mainStackView = editorView
+        self.mainView = editorView
         let data = Model()
         self.data = data
         self.presentMethod = method
-        self.mainStackView.rotateImageButtonTapHandler = { [weak self] in
+        self.mainView.rotateImageButtonTapHandler = { [weak self] in
             self?.rotateImageButtonTapped()
         }
-        self.mainStackView.bwImageButtonTapHandler = { [weak self] in
+        self.mainView.bwImageButtonTapHandler = { [weak self] in
             self?.bwButtonTapped()
         }
-        self.mainStackView.mirrorImageButtonTapHandler = { [weak self] in
+        self.mainView.mirrorImageButtonTapHandler = { [weak self] in
             self?.mirrorImageButtonTapped()
         }
-        self.mainStackView.showAlertHandler = { [weak self] in
+        self.mainView.showAlertHandler = { [weak self] in
             self?.showAlert()
         }
-        self.mainStackView.clearImageHandler = { [weak self] in
-            self?.clearImageButtonTapped()
-        }
-        self.mainStackView.setImageHandler = { [weak self] in
-            self?.setImageButtonTapped()
-        }
-        self.mainStackView.saveImageHandler = { [weak self] in
-            self?.saveImageButtonTapped()
-        }
         let actions = [
-            Actions(title: "Очистить", method: self.mainStackView.clearImageHandler),
-            Actions(title: "Поставить дефолтное", method: self.mainStackView.setImageHandler),
-            Actions(title: "Сохранить", method: self.mainStackView.saveImageHandler)
+            Actions(title: "Очистить", method: self.clearImageButtonTapped),
+            Actions(title: "Поставить дефолтное", method: self.setImageButtonTapped),
+            Actions(title: "Сохранить", method: self.saveImageButtonTapped)
         ]
         let alert = Alert(title: "Выберите действие", actions: actions)
-        self.mainStackView.setAlertContent(alert: alert.alertController)
+        self.mainView.setAlertContent(alert: alert.alertController)
     }
     
     func rotateImageButtonTapped() {
-        if let image = self.mainStackView.getImage() {
-            self.mainStackView.setImage(newImage: image.rotateImage(radians: .pi/2))
+        if let image = self.mainView.getImage() {
+            self.mainView.setImage(newImage: image.rotateImage(radians: .pi/2))
         }
     }
     
     func bwButtonTapped() {
-        if let image = self.mainStackView.getImage() {
-            self.mainStackView.setImage(newImage: image.grayscaleImage())
+        if let image = self.mainView.getImage() {
+            self.mainView.setImage(newImage: image.grayscaleImage())
         }
     }
     
     func mirrorImageButtonTapped() {
-        if let image = self.mainStackView.getImage() {
-            self.mainStackView.setImage(newImage: imageRedactor.mirrorImage(image: image))
+        if let image = self.mainView.getImage() {
+            self.mainView.setImage(newImage: imageRedactor.mirrorImage(image: image))
         }
     }
     
@@ -71,17 +62,17 @@ class Presenter {
     }
     
     func clearImageButtonTapped() {
-        self.mainStackView.setImage(newImage: nil)
+        self.mainView.setImage(newImage: nil)
     }
     
     func setImageButtonTapped() {
-        self.mainStackView.setImage(newImage: imageRedactor.setDefaultImage())
+        self.mainView.setImage(newImage: imageRedactor.setDefaultImage())
     }
     
     func saveImageButtonTapped() {
-        if let image = self.mainStackView.getImage() {
+        if let image = self.mainView.getImage() {
             data.savedImages.append(image)
-            self.mainStackView.updateImageCollection(images: data.savedImages)
+            self.mainView.updateImageCollection(images: data.savedImages)
         }
     }
 }

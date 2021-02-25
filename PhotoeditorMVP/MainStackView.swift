@@ -7,15 +7,27 @@
 
 import UIKit
 
-class MainStackView: UIStackView, UIGestureRecognizerDelegate {
+protocol MainViewProtocol {
+    
+    
+    var rotateImageButtonTapHandler: (() -> Void)? { get set}
+    var bwImageButtonTapHandler: (() -> Void)? { get set}
+    var mirrorImageButtonTapHandler: (() -> Void)? { get set}
+    var showAlertHandler: (() -> Void)? { get set}
+    var imageTapAlert: UIAlertController! { get set}
+    
+    func setAlertContent(alert: UIAlertController)
+    func setImage(newImage: UIImage?)
+    func getImage() -> UIImage?
+    func updateImageCollection(images: [UIImage])
+}
+
+class MainStackView: UIStackView, UIGestureRecognizerDelegate, MainViewProtocol {
     
     var rotateImageButtonTapHandler: (() -> Void)?
     var bwImageButtonTapHandler: (() -> Void)?
     var mirrorImageButtonTapHandler: (() -> Void)?
     var showAlertHandler: (() -> Void)?
-    var clearImageHandler: (() -> Void)?
-    var setImageHandler: (() -> Void)?
-    var saveImageHandler: (() -> Void)?
     
     private var imageView: UIImageView!
     private var buttonStack: UIStackView!
@@ -48,7 +60,9 @@ class MainStackView: UIStackView, UIGestureRecognizerDelegate {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         tapGesture.delegate = self
-        self.imageView.addGestureRecognizer(tapGesture)    }
+        self.imageView.addGestureRecognizer(tapGesture)
+        
+    }
     
     func setAlertContent(alert: UIAlertController) {
         self.imageTapAlert = alert
