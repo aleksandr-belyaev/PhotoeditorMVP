@@ -10,9 +10,9 @@ import UIKit
 struct Actions {
     let action: UIAlertAction
     
-    init(title: String, method: (() -> Void)?) {
+    init(title: String, method: @escaping () -> Void) {
         let action = UIAlertAction(title: title, style: .default) { (_) in
-            method!()
+            method()
         }
         self.action = action
     }

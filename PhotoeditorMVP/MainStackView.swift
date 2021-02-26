@@ -9,7 +9,6 @@ import UIKit
 
 protocol MainViewProtocol {
     
-    
     var rotateImageButtonTapHandler: (() -> Void)? { get set}
     var bwImageButtonTapHandler: (() -> Void)? { get set}
     var mirrorImageButtonTapHandler: (() -> Void)? { get set}
