@@ -13,7 +13,7 @@ class Presenter {
     var presentMethod: () -> Void
     var data: Model
     
-    init(editorView: MainStackView, method: @escaping () -> Void) {
+    init(editorView: MainViewProtocol, method: @escaping () -> Void) {
         self.mainView = editorView
         let data = Model()
         self.data = data
