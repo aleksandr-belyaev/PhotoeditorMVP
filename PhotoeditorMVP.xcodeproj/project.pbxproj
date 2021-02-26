@@ -72,23 +72,47 @@
 		E75B4E7925D827A0001E858D /* PhotoeditorMVP */ = {
 			isa = PBXGroup;
 			children = (
+				E791188725E8E23B003E92D4 /* Model */,
+				E791188625E8E231003E92D4 /* View */,
+				E791188425E8E221003E92D4 /* Presenter */,
+				E75B4E8025D827A0001E858D /* Main.storyboard */,
 				E75B4E7A25D827A0001E858D /* AppDelegate.swift */,
 				E75B4E7C25D827A0001E858D /* SceneDelegate.swift */,
-				E75B4E7E25D827A0001E858D /* ViewController.swift */,
-				E75B4E9525D83793001E858D /* MainStackView.swift */,
-				E791187D25E37137003E92D4 /* AlertContent.swift */,
-				E7AB58D825DD460600B71126 /* ImageRedactor.swift */,
-				E770DF7225D9686F007E8086 /* Model.swift */,
-				E770DF7B25D96E88007E8086 /* CollectionView.swift */,
-				E770DF7825D96AD8007E8086 /* CollectionViewCell.swift */,
-				E75B4E9225D8337C001E858D /* CustomButton.swift */,
-				E75B4E8F25D82816001E858D /* Presenter.swift */,
-				E75B4E8025D827A0001E858D /* Main.storyboard */,
 				E75B4E8325D827A2001E858D /* Assets.xcassets */,
 				E75B4E8525D827A2001E858D /* LaunchScreen.storyboard */,
 				E75B4E8825D827A2001E858D /* Info.plist */,
 			);
 			path = PhotoeditorMVP;
+			sourceTree = "<group>";
+		};
+		E791188425E8E221003E92D4 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				E791187D25E37137003E92D4 /* AlertContent.swift */,
+				E7AB58D825DD460600B71126 /* ImageRedactor.swift */,
+				E75B4E8F25D82816001E858D /* Presenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		E791188625E8E231003E92D4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E75B4E7E25D827A0001E858D /* ViewController.swift */,
+				E75B4E9525D83793001E858D /* MainStackView.swift */,
+				E770DF7B25D96E88007E8086 /* CollectionView.swift */,
+				E770DF7825D96AD8007E8086 /* CollectionViewCell.swift */,
+				E75B4E9225D8337C001E858D /* CustomButton.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E791188725E8E23B003E92D4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E770DF7225D9686F007E8086 /* Model.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
