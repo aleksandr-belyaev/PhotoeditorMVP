@@ -31,9 +31,9 @@ class Presenter {
             self?.showAlert()
         }
         let actions = [
-            Actions(title: "Очистить", method: self.clearImageButtonTapped),
-            Actions(title: "Поставить дефолтное", method: self.setImageButtonTapped),
-            Actions(title: "Сохранить", method: self.saveImageButtonTapped)
+            Action(title: "Очистить", method: self.clearImageButtonTapped),
+            Action(title: "Поставить дефолтное", method: self.setImageButtonTapped),
+            Action(title: "Сохранить", method: self.saveImageButtonTapped)
         ]
         let alert = Alert(title: "Выберите действие", actions: actions)
         self.mainView.setAlertContent(alert: alert.alertController)

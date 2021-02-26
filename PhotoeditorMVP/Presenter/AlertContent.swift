@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct Actions {
+struct Action {
     let action: UIAlertAction
     
     init(title: String, method: @escaping () -> Void) {
@@ -21,7 +21,7 @@ struct Actions {
 class Alert {
     var alertController: UIAlertController
     
-    init(title: String, actions: [Actions]) {
+    init(title: String, actions: [Action]) {
         let imageTapAlert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
         for alert in actions {
             imageTapAlert.addAction(alert.action)
