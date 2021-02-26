@@ -15,7 +15,7 @@ protocol MainViewProtocol {
     var showAlertHandler: (() -> Void)? { get set}
     var imageTapAlert: UIAlertController! { get set}
     
-    func setAlertContent(alert: UIAlertController)
+    func setAlertContent(alertActions: [Action], alertTitle: String)
     func setImage(newImage: UIImage?)
     func getImage() -> UIImage?
     func updateImageCollection(images: [UIImage])

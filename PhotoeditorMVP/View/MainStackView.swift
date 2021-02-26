@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainStackView: UIStackView, UIGestureRecognizerDelegate, MainViewProtocol {
+class MainView: UIStackView, UIGestureRecognizerDelegate, MainViewProtocol {
     
     var rotateImageButtonTapHandler: (() -> Void)?
     var bwImageButtonTapHandler: (() -> Void)?
@@ -49,8 +49,12 @@ class MainStackView: UIStackView, UIGestureRecognizerDelegate, MainViewProtocol 
         
     }
     
-    func setAlertContent(alert: UIAlertController) {
-        self.imageTapAlert = alert
+    func setAlertContent(alertActions: [Action], alertTitle: String) {
+        let imageTapAlert = UIAlertController(title: alertTitle, message: nil, preferredStyle: .alert)
+        for alert in alertActions {
+            imageTapAlert.addAction(alert.action)
+        }
+        self.imageTapAlert = imageTapAlert
     }
     
     @objc func imageTapped(_ gesture: UIGestureRecognizer) {

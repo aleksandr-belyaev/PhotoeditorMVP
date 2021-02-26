@@ -17,15 +17,3 @@ struct Action {
         self.action = action
     }
 }
-
-class Alert {
-    var alertController: UIAlertController
-    
-    init(title: String, actions: [Action]) {
-        let imageTapAlert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-        for alert in actions {
-            imageTapAlert.addAction(alert.action)
-        }
-        self.alertController = imageTapAlert
-    }
-}

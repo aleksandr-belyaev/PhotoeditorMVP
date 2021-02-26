@@ -9,12 +9,12 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var mainStackView: MainStackView!
+    var mainStackView: MainView!
     var presenter: Presenter!
     
     override func loadView() {
         super.loadView()
-        let mainStackView = MainStackView()
+        let mainStackView = MainView()
         self.presenter = Presenter(editorView: mainStackView) { [weak self] in
             self?.present(mainStackView.imageTapAlert, animated: true)
         }

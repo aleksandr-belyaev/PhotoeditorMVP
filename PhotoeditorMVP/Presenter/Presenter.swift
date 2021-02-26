@@ -8,10 +8,10 @@
 import Foundation
 
 class Presenter {
-    var mainView: MainViewProtocol
-    var imageRedactor = ImageRedactor()
-    var presentMethod: () -> Void
-    var data: Model
+    private var mainView: MainViewProtocol
+    private var imageRedactor = ImageRedactor()
+    private var presentMethod: () -> Void
+    private var data: Model
     
     init(editorView: MainViewProtocol, method: @escaping () -> Void) {
         self.mainView = editorView
@@ -35,41 +35,40 @@ class Presenter {
             Action(title: "Поставить дефолтное", method: self.setImageButtonTapped),
             Action(title: "Сохранить", method: self.saveImageButtonTapped)
         ]
-        let alert = Alert(title: "Выберите действие", actions: actions)
-        self.mainView.setAlertContent(alert: alert.alertController)
+        self.mainView.setAlertContent(alertActions: actions, alertTitle: "Выберите действие")
     }
     
-    func rotateImageButtonTapped() {
+    private func rotateImageButtonTapped() {
         if let image = self.mainView.getImage() {
             self.mainView.setImage(newImage: image.rotateImage(radians: .pi/2))
         }
     }
     
-    func bwButtonTapped() {
+    private func bwButtonTapped() {
         if let image = self.mainView.getImage() {
             self.mainView.setImage(newImage: image.grayscaleImage())
         }
     }
     
-    func mirrorImageButtonTapped() {
+    private func mirrorImageButtonTapped() {
         if let image = self.mainView.getImage() {
             self.mainView.setImage(newImage: imageRedactor.mirrorImage(image: image))
         }
     }
     
-    func showAlert() {
+    private func showAlert() {
         self.presentMethod()
     }
     
-    func clearImageButtonTapped() {
+    private func clearImageButtonTapped() {
         self.mainView.setImage(newImage: nil)
     }
     
-    func setImageButtonTapped() {
+    private func setImageButtonTapped() {
         self.mainView.setImage(newImage: imageRedactor.setDefaultImage())
     }
     
-    func saveImageButtonTapped() {
+    private func saveImageButtonTapped() {
         if let image = self.mainView.getImage() {
             data.savedImages.append(image)
             self.mainView.updateImageCollection(images: data.savedImages)
