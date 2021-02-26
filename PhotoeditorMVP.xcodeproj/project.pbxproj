@@ -20,6 +20,7 @@
 		E770DF7925D96AD8007E8086 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E770DF7825D96AD8007E8086 /* CollectionViewCell.swift */; };
 		E770DF7C25D96E88007E8086 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E770DF7B25D96E88007E8086 /* CollectionView.swift */; };
 		E791187E25E37137003E92D4 /* AlertContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E791187D25E37137003E92D4 /* AlertContent.swift */; };
+		E791188B25E927BF003E92D4 /* MainViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E791188A25E927BF003E92D4 /* MainViewProtocol.swift */; };
 		E7AB58D925DD460600B71126 /* ImageRedactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AB58D825DD460600B71126 /* ImageRedactor.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		E770DF7825D96AD8007E8086 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		E770DF7B25D96E88007E8086 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		E791187D25E37137003E92D4 /* AlertContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertContent.swift; sourceTree = "<group>"; };
+		E791188A25E927BF003E92D4 /* MainViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewProtocol.swift; sourceTree = "<group>"; };
 		E7AB58D825DD460600B71126 /* ImageRedactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRedactor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,6 +90,7 @@
 		E791188425E8E221003E92D4 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				E791188A25E927BF003E92D4 /* MainViewProtocol.swift */,
 				E791187D25E37137003E92D4 /* AlertContent.swift */,
 				E7AB58D825DD460600B71126 /* ImageRedactor.swift */,
 				E75B4E8F25D82816001E858D /* Presenter.swift */,
@@ -188,6 +191,7 @@
 				E770DF7325D9686F007E8086 /* Model.swift in Sources */,
 				E75B4E7F25D827A0001E858D /* ViewController.swift in Sources */,
 				E770DF7925D96AD8007E8086 /* CollectionViewCell.swift in Sources */,
+				E791188B25E927BF003E92D4 /* MainViewProtocol.swift in Sources */,
 				E75B4E7B25D827A0001E858D /* AppDelegate.swift in Sources */,
 				E75B4E9625D83793001E858D /* MainStackView.swift in Sources */,
 				E770DF7C25D96E88007E8086 /* CollectionView.swift in Sources */,
